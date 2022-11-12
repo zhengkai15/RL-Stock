@@ -7,6 +7,7 @@ from stable_baselines import PPO2
 from rlenv.StockTradingEnv0 import StockTradingEnv
 
 import numpy as np
+# np.random.bit_generator = np.random._bit_generator
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
@@ -48,7 +49,7 @@ def find_file(path, name):
                 return os.path.join(root, fname)
 
 
-def test_a_stock_trade(stock_code):
+def a_stock_trade(stock_code):
     stock_file = find_file('./stockdata/train', str(stock_code))
 
     daily_profits = stock_trade(stock_file)
@@ -58,7 +59,7 @@ def test_a_stock_trade(stock_code):
     plt.xlabel('step')
     plt.ylabel('profit')
     ax.legend(prop=font)
-    # plt.show()
+    plt.show()
     plt.savefig(f'./img/{stock_code}.png')
 
 
@@ -83,7 +84,7 @@ def multi_stock_trade():
 
 if __name__ == '__main__':
     # multi_stock_trade()
-    test_a_stock_trade('sh.600036')
     # ret = find_file('./stockdata/train', '600036')
     # print(ret)
+    a_stock_trade('sz.002594')
 
