@@ -159,3 +159,4 @@ pip install -r requirements.txt
 
 ## 修改方向
 1、是否能获取每个时刻的数据？？
+2、画出测试集收益和原始曲线的对比图，以及每个地方的action
