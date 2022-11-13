@@ -31,6 +31,9 @@ def stock_trade(stock_file):
 
     env = DummyVecEnv([lambda: StockTradingEnv(df_test)])
     obs = env.reset()
+    '''
+    策略网络观测的就是一只股票的各项参数，比如开盘价、收盘价、成交数量等。部分数值会是一个很大的数值，比如成交金额或者成交量，有可能百万、千万乃至更大，为了训练时网络收敛，观测的状态数据输入时，必须要进行归一化，变换到 [-1, 1] 的区间内。
+    '''
     for i in range(len(df_test) - 1):
         action, _states = model.predict(obs)
         obs, rewards, done, info = env.step(action)
@@ -59,7 +62,7 @@ def a_stock_trade(stock_code):
     plt.xlabel('step')
     plt.ylabel('profit')
     ax.legend(prop=font)
-    plt.show()
+    # plt.show()
     plt.savefig(f'./img/{stock_code}.png')
 
 
@@ -70,7 +73,7 @@ def multi_stock_trade():
     group_result = []
 
     for code in range(start_code, start_code + max_num):
-        stock_file = find_file('./stockdata/train', str(code))
+        stock_file = find_file('./stockdata/test', str(code))
         if stock_file:
             try:
                 profits = stock_trade(stock_file)
@@ -86,5 +89,9 @@ if __name__ == '__main__':
     # multi_stock_trade()
     # ret = find_file('./stockdata/train', '600036')
     # print(ret)
+
+    '''
+    如果需要基于当下，预测未来，需要去获取最新的数据来训练模型，
+    '''
     a_stock_trade('sz.002594')
 

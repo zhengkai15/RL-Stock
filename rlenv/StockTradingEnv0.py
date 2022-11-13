@@ -36,6 +36,10 @@ class StockTradingEnv(gym.Env):
             low=0, high=1, shape=(19,), dtype=np.float16)
 
     def _next_observation(self):
+        '''
+        最高价 最低价 收盘价 成交量 成交金额 都用到了未来信息
+        :return:
+        '''
         obs = np.array([
             self.df.loc[self.current_step, 'open'] / MAX_SHARE_PRICE,
             self.df.loc[self.current_step, 'high'] / MAX_SHARE_PRICE,
@@ -60,7 +64,7 @@ class StockTradingEnv(gym.Env):
         return obs
 
     def _take_action(self, action):
-        # Set the current price to a random price within the time step
+        # Set the current price to a random price within the time step    Sky:？？？？ 为什么要这么设置？？
         current_price = random.uniform(
             self.df.loc[self.current_step, "open"], self.df.loc[self.current_step, "close"])
 
