@@ -151,3 +151,11 @@ pip install -r requirements.txt
 - [Create custom gym environments from scratch — A stock market example](https://towardsdatascience.com/creating-a-custom-openai-gym-environment-for-stock-trading-be532be3910e)
 - [notadamking/Stock-Trading-Environment](https://github.com/notadamking/Stock-Trading-Environment)
 - [Welcome to Stable Baselines docs! - RL Baselines Made Easy](https://stable-baselines.readthedocs.io/en/master)
+
+
+## 项目问题
+1、用到了未来信息，收盘价，最低价、成交量成、交金额、最高价未知  
+2、当前价格时当天的最高价和最低价之间的随机数
+
+## 修改方向
+1、是否能获取每个时刻的数据？？
